@@ -1,0 +1,11 @@
+<?php
+
+// main.php
+
+include("Blagajna.php");
+include("Ponuda.php");
+include("Racun.php");
+
+$blagajna = new Blagajna();
+
+?>
