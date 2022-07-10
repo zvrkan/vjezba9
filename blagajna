@@ -1,0 +1,114 @@
+<?php
+
+// Blagajna.php
+
+class Blagajna
+{
+    protected $ponude = array();
+    protected $racuni = array();
+
+    function __construct()
+    {
+        $this->OdabirAkcije();
+    }
+
+    function getPonude()
+    {
+        return $this->ponude;
+    }
+
+    function setPonuda($param)
+    {
+        $this->ponude[] = $param;
+    }
+
+    function getRacuni()
+    {
+        return $this->racuni;
+    }
+
+    function setRacun($param)
+    {
+        $this->racuni[] = $param;
+    }    
+
+    function OdabirAkcije()
+    {   
+        $akcija = readline("Odaberite akciju (P)onuda ili (R)acun: ");
+
+        switch($akcija)
+        {
+            case 'P':
+            case 'p':
+
+                $br = count($this->ponude);
+                $br++;
+
+                $ponuda = new Ponuda($br);
+
+                $i = 1;
+
+                while(true)
+                {
+                    echo "Stavaka ".$i.":\n";
+                    $stavka = $this->Unos();
+                    $ponuda->setStavka($stavka);
+                    $i++;
+
+                    $check = readline("Da li zelite unijeti jos jednu stavku D/N: ");
+
+                    if($check == "N" || $check == "n")
+                    {
+                        break;
+                    }
+                }
+
+                $this->ponude[] = $ponuda;
+            break;
+
+            case 'R':
+            case 'r':
+
+                $br = count($this->racuni);
+                $br++;
+
+                $racun = new Racun($br);
+
+                $i = 1;
+
+                while(true)
+                {
+                    echo "Stavaka ".$i.":\n";
+                    $stavka = $this->Unos();
+                    $racun->setStavka($stavka);
+                    $i++;
+
+                    $check = readline("Da li zelite unijeti jos jednu stavku D/N: ");
+
+                    if($check == "N" || $check == "n")
+                    {
+                        break;
+                    }
+                }
+
+                $this->racuni[] = $racun;
+            break; 
+            
+            default:
+                // kod 3
+        }
+    }
+
+    function Unos()
+    {
+        $prozivod_naziv = readline("Proizvod: ");
+        $proizvod_kolicina = readline("Kolicina: ");
+        $proizvod_cijena = readline("Cijena: ");
+
+        $stavka = array($prozivod_naziv, $proizvod_kolicina, $proizvod_cijena);
+
+        return $stavka;
+    }
+}
+
+?>
