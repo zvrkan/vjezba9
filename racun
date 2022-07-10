@@ -1,0 +1,20 @@
+<?php
+
+// Racun.php
+
+class Racun extends Ponuda
+{
+    protected $tipPlacanja;
+
+    function getTipPlacanja()
+    {
+        return $this->tipPlacanja;
+    }
+
+    function setTipPlacanja($param)
+    {
+        $this->tipPlacanja = $param;
+    }
+}
+
+?>
